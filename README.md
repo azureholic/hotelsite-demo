@@ -169,7 +169,8 @@ Configure these repository settings:
 **Secrets:**
 | Secret | Description |
 |--------|-------------|
-| `AZURE_CLIENT_ID` | Service principal client ID (for OIDC login) |
+| `AZURE_CLIENT_ID` | Service principal application (client) ID |
+| `AZURE_CLIENT_SECRET` | Service principal client secret |
 | `AZURE_TENANT_ID` | Azure AD tenant ID |
 | `AZURE_SUBSCRIPTION_ID` | Azure subscription ID |
 | `AZURE_OPENAI_ENDPOINT` | Azure OpenAI endpoint URL |
