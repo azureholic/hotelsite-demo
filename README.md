@@ -164,9 +164,9 @@ az webapp deploy --resource-group rg-staybright --name staybright-demo-app --src
 
 ### Option 3: GitHub Actions
 
-Configure these repository settings:
+Configure these settings in a GitHub deployment environment named **`azure`** (Settings → Environments → New environment):
 
-**Secrets:**
+**Secrets** (environment-scoped):
 | Secret | Description |
 |--------|-------------|
 | `AZURE_CLIENT_ID` | Service principal application (client) ID |
@@ -176,7 +176,7 @@ Configure these repository settings:
 | `AZURE_OPENAI_ENDPOINT` | Azure OpenAI endpoint URL |
 | `AZURE_OPENAI_API_KEY` | Azure OpenAI API key |
 
-**Variables:**
+**Variables** (environment-scoped):
 | Variable | Description |
 |----------|-------------|
 | `AZURE_RESOURCE_GROUP` | Target resource group name |
