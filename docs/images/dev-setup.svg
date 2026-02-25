@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 320" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <filter id="shadow" x="-2%" y="-2%" width="104%" height="104%">
+      <feDropShadow dx="1" dy="2" stdDeviation="3" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrowGreen" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#16a34a"/>
+    </marker>
+    <marker id="arrowBlue" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#0078D4"/>
+    </marker>
+    <marker id="arrowOrange" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#d97706"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="320" rx="12" fill="#f9fafb"/>
+  <text x="450" y="33" text-anchor="middle" font-size="20" font-weight="700" fill="#1e293b">Local Development Setup</text>
+
+  <!-- Vite Dev Server -->
+  <rect x="40" y="60" width="220" height="160" rx="12" fill="white" stroke="#a855f7" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="40" y="60" width="220" height="30" rx="12" fill="#a855f7"/>
+  <rect x="40" y="78" width="220" height="12" fill="#a855f7"/>
+  <!-- Vite lightning bolt -->
+  <text x="55" y="81" font-size="14" fill="white">⚡</text>
+  <text x="75" y="81" font-size="12" font-weight="700" fill="white">Vite Dev Server</text>
+
+  <text x="150" y="114" text-anchor="middle" font-size="12" font-weight="600" fill="#1e293b">localhost:5173</text>
+
+  <!-- React icon -->
+  <ellipse cx="110" cy="150" rx="16" ry="6" fill="none" stroke="#61DAFB" stroke-width="1.2" transform="rotate(-30,110,150)"/>
+  <ellipse cx="110" cy="150" rx="16" ry="6" fill="none" stroke="#61DAFB" stroke-width="1.2" transform="rotate(30,110,150)"/>
+  <ellipse cx="110" cy="150" rx="16" ry="6" fill="none" stroke="#61DAFB" stroke-width="1.2"/>
+  <circle cx="110" cy="150" r="2.5" fill="#61DAFB"/>
+  <text x="135" y="146" font-size="11" font-weight="600" fill="#20232a">React 19</text>
+  <text x="135" y="162" font-size="9" fill="#6b7280">TypeScript 5.9</text>
+
+  <!-- Tailwind -->
+  <text x="100" y="188" font-size="10" fill="#06B6D4" font-weight="600">🎨 Tailwind CSS 4</text>
+  <text x="100" y="204" font-size="10" fill="#6b7280">Hot Module Reload</text>
+
+  <!-- Backend -->
+  <rect x="340" y="60" width="220" height="230" rx="12" fill="white" stroke="#512BD4" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="340" y="60" width="220" height="30" rx="12" fill="#512BD4"/>
+  <rect x="340" y="78" width="220" height="12" fill="#512BD4"/>
+  <circle cx="360" cy="76" r="9" fill="white"/>
+  <text x="360" y="80" text-anchor="middle" font-size="9" font-weight="800" fill="#512BD4">.N</text>
+  <text x="380" y="81" font-size="12" font-weight="700" fill="white">ASP.NET Core</text>
+
+  <text x="450" y="114" text-anchor="middle" font-size="12" font-weight="600" fill="#1e293b">localhost:5000</text>
+
+  <rect x="358" y="128" width="184" height="26" rx="5" fill="#f0fdf4" stroke="#16a34a" stroke-width="0.8"/>
+  <text x="450" y="146" text-anchor="middle" font-size="10" fill="#16a34a" font-weight="600">REST API  /api/*</text>
+
+  <rect x="358" y="162" width="184" height="26" rx="5" fill="#fef3c7" stroke="#d97706" stroke-width="0.8"/>
+  <text x="450" y="180" text-anchor="middle" font-size="10" fill="#d97706" font-weight="600">MCP Server  /mcp</text>
+
+  <rect x="358" y="196" width="184" height="26" rx="5" fill="#ede9fe" stroke="#7c3aed" stroke-width="0.8"/>
+  <text x="450" y="214" text-anchor="middle" font-size="10" fill="#7c3aed" font-weight="600">AG-UI  /agent-chat</text>
+
+  <rect x="358" y="230" width="184" height="26" rx="5" fill="#e0f2fe" stroke="#0284c7" stroke-width="0.8"/>
+  <text x="450" y="248" text-anchor="middle" font-size="10" fill="#0284c7" font-weight="600">OpenAPI  /openapi/v1.json</text>
+
+  <text x="450" y="278" text-anchor="middle" font-size="9" fill="#64748b">In-memory data (100 hotels)</text>
+
+  <!-- Azure OpenAI -->
+  <rect x="640" y="60" width="220" height="100" rx="12" fill="white" stroke="#0078D4" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="640" y="60" width="220" height="30" rx="12" fill="#0078D4"/>
+  <rect x="640" y="78" width="220" height="12" fill="#0078D4"/>
+  <text x="660" y="81" font-size="12" font-weight="700" fill="white">🧠 Azure OpenAI</text>
+  <text x="750" y="114" text-anchor="middle" font-size="13" font-weight="600" fill="#1e293b">gpt-4o</text>
+  <text x="750" y="134" text-anchor="middle" font-size="10" fill="#6b7280">Cloud Service</text>
+
+  <!-- Console Agent -->
+  <rect x="640" y="200" width="220" height="80" rx="12" fill="white" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="640" y="200" width="220" height="28" rx="12" fill="#d97706"/>
+  <rect x="640" y="218" width="220" height="10" fill="#d97706"/>
+  <text x="660" y="219" font-size="11" font-weight="700" fill="white">🖥️ Console Agent</text>
+  <text x="750" y="250" text-anchor="middle" font-size="11" font-weight="600" fill="#1e293b">dotnet run</text>
+  <text x="750" y="268" text-anchor="middle" font-size="9" fill="#6b7280">MCP Client · Interactive CLI</text>
+
+  <!-- Proxy arrow: Vite → Backend -->
+  <line x1="260" y1="140" x2="338" y2="140" stroke="#16a34a" stroke-width="2" marker-end="url(#arrowGreen)"/>
+  <rect x="270" y="122" width="56" height="16" rx="3" fill="#16a34a"/>
+  <text x="298" y="134" text-anchor="middle" font-size="9" font-weight="600" fill="white">proxy</text>
+  <text x="298" y="154" text-anchor="middle" font-size="8" fill="#6b7280">/api/* → :5000</text>
+
+  <!-- Backend → Azure OpenAI -->
+  <line x1="560" y1="110" x2="638" y2="110" stroke="#0078D4" stroke-width="2" marker-end="url(#arrowBlue)"/>
+  <text x="598" y="104" text-anchor="middle" font-size="8" fill="#0078D4" font-weight="600">HTTPS</text>
+
+  <!-- Console Agent → Backend MCP -->
+  <line x1="640" y1="240" x2="562" y2="176" stroke="#d97706" stroke-width="2" marker-end="url(#arrowOrange)"/>
+  <text x="610" y="196" font-size="8" fill="#d97706" font-weight="600">MCP/HTTP</text>
+
+  <!-- Console Agent → Azure OpenAI -->
+  <line x1="750" y1="200" x2="750" y2="162" stroke="#0078D4" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arrowBlue)"/>
+  <text x="762" y="184" font-size="8" fill="#0078D4">API Key</text>
+</svg>

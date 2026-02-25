@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 720" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <filter id="shadow" x="-2%" y="-2%" width="104%" height="104%">
+      <feDropShadow dx="1" dy="2" stdDeviation="3" flood-opacity="0.12"/>
+    </filter>
+    <linearGradient id="azureBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e8f4fd"/>
+      <stop offset="100%" stop-color="#d0eafc"/>
+    </linearGradient>
+    <linearGradient id="dotnetGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#512BD4"/>
+      <stop offset="100%" stop-color="#6E3FF5"/>
+    </linearGradient>
+    <linearGradient id="reactGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#20232a"/>
+      <stop offset="100%" stop-color="#2c2f3a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1100" height="720" rx="12" fill="#f9fafb"/>
+
+  <!-- Title -->
+  <text x="550" y="38" text-anchor="middle" font-size="22" font-weight="700" fill="#1e293b">StayBright Hotels — Architecture Overview</text>
+
+  <!-- Azure App Service box -->
+  <rect x="40" y="58" width="720" height="490" rx="14" fill="url(#azureBg)" stroke="#0078D4" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="40" y="58" width="720" height="36" rx="14" fill="#0078D4"/>
+  <rect x="40" y="80" width="720" height="14" fill="#0078D4"/>
+  <!-- Azure logo text -->
+  <text x="60" y="82" font-size="15" font-weight="700" fill="white">☁ Azure App Service</text>
+
+  <!-- ASP.NET Core Backend box -->
+  <rect x="60" y="104" width="680" height="300" rx="10" fill="white" stroke="#512BD4" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="60" y="104" width="680" height="30" rx="10" fill="url(#dotnetGrad)"/>
+  <rect x="60" y="124" width="680" height="10" fill="url(#dotnetGrad)"/>
+  <!-- .NET icon -->
+  <circle cx="80" cy="120" r="9" fill="white"/>
+  <text x="80" y="124" text-anchor="middle" font-size="11" font-weight="800" fill="#512BD4">.N</text>
+  <text x="100" y="124" font-size="13" font-weight="700" fill="white">ASP.NET Core Backend (net10.0)</text>
+
+  <!-- API endpoints row -->
+  <!-- REST API -->
+  <rect x="80" y="148" width="148" height="70" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.2"/>
+  <text x="154" y="168" text-anchor="middle" font-size="12" font-weight="700" fill="#16a34a">REST API</text>
+  <text x="154" y="184" text-anchor="middle" font-size="10" fill="#4b5563">/api/hotels</text>
+  <text x="154" y="197" text-anchor="middle" font-size="10" fill="#4b5563">/api/bookings</text>
+  <text x="154" y="210" text-anchor="middle" font-size="10" fill="#4b5563">/api/config</text>
+
+  <!-- MCP Server -->
+  <rect x="242" y="148" width="148" height="70" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="1.2"/>
+  <text x="316" y="168" text-anchor="middle" font-size="12" font-weight="700" fill="#d97706">MCP Server</text>
+  <text x="316" y="184" text-anchor="middle" font-size="10" fill="#4b5563">/mcp</text>
+  <text x="316" y="197" text-anchor="middle" font-size="10" fill="#4b5563">HTTP + SSE Transport</text>
+  <text x="316" y="210" text-anchor="middle" font-size="10" fill="#4b5563">7 Hotel Tools</text>
+
+  <!-- AG-UI Agent -->
+  <rect x="404" y="148" width="148" height="70" rx="8" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.2"/>
+  <text x="478" y="168" text-anchor="middle" font-size="12" font-weight="700" fill="#7c3aed">AG-UI Agent</text>
+  <text x="478" y="184" text-anchor="middle" font-size="10" fill="#4b5563">/agent-chat</text>
+  <text x="478" y="197" text-anchor="middle" font-size="10" fill="#4b5563">SSE Streaming</text>
+  <text x="478" y="210" text-anchor="middle" font-size="10" fill="#4b5563">Microsoft Agent Fw</text>
+
+  <!-- OpenAPI -->
+  <rect x="566" y="148" width="148" height="70" rx="8" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+  <text x="640" y="168" text-anchor="middle" font-size="12" font-weight="700" fill="#0284c7">OpenAPI</text>
+  <text x="640" y="184" text-anchor="middle" font-size="10" fill="#4b5563">/openapi/v1.json</text>
+  <text x="640" y="197" text-anchor="middle" font-size="10" fill="#4b5563">Auto-generated</text>
+  <text x="640" y="210" text-anchor="middle" font-size="10" fill="#4b5563">Schema</text>
+
+  <!-- Services layer -->
+  <rect x="80" y="234" width="470" height="58" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4,2"/>
+  <text x="315" y="254" text-anchor="middle" font-size="12" font-weight="600" fill="#475569">Services Layer</text>
+  <text x="315" y="272" text-anchor="middle" font-size="10" fill="#64748b">HotelService  ·  BookingService  ·  FeatureToggleService</text>
+
+  <!-- Feature Toggle badge -->
+  <rect x="566" y="240" width="148" height="46" rx="8" fill="#fce7f3" stroke="#db2777" stroke-width="1.2"/>
+  <text x="640" y="260" text-anchor="middle" font-size="12" font-weight="700" fill="#db2777">⚡ Feature Toggle</text>
+  <text x="640" y="276" text-anchor="middle" font-size="10" fill="#4b5563">Chat on/off</text>
+
+  <!-- Seed Data -->
+  <rect x="210" y="306" width="260" height="52" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="1"/>
+  <text x="340" y="326" text-anchor="middle" font-size="12" font-weight="600" fill="#ea580c">📦 In-Memory Seed Data</text>
+  <text x="340" y="342" text-anchor="middle" font-size="10" fill="#4b5563">100 Hotels · 64 Countries · Rooms &amp; Amenities</text>
+
+  <!-- React SPA box -->
+  <rect x="60" y="420" width="680" height="50" rx="10" fill="url(#reactGrad)" filter="url(#shadow)"/>
+  <!-- React atom icon (simplified) -->
+  <ellipse cx="84" cy="445" rx="12" ry="5" fill="none" stroke="#61DAFB" stroke-width="1.2" transform="rotate(-30,84,445)"/>
+  <ellipse cx="84" cy="445" rx="12" ry="5" fill="none" stroke="#61DAFB" stroke-width="1.2" transform="rotate(30,84,445)"/>
+  <ellipse cx="84" cy="445" rx="12" ry="5" fill="none" stroke="#61DAFB" stroke-width="1.2"/>
+  <circle cx="84" cy="445" r="2" fill="#61DAFB"/>
+  <text x="106" y="450" font-size="14" font-weight="700" fill="#61DAFB">React SPA</text>
+  <text x="240" y="450" font-size="11" fill="#9ca3af">React 19 · TypeScript · Tailwind CSS · Vite</text>
+  <text x="550" y="450" font-size="10" fill="#9ca3af">(served as static files from wwwroot/)</text>
+
+  <!-- External clients section -->
+  <!-- Browser -->
+  <rect x="40" y="575" width="190" height="90" rx="10" fill="white" stroke="#6b7280" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="135" y="600" text-anchor="middle" font-size="14" font-weight="700" fill="#1e293b">🌐 Browser</text>
+  <text x="135" y="618" text-anchor="middle" font-size="11" fill="#6b7280">React UI</text>
+  <text x="135" y="634" text-anchor="middle" font-size="11" fill="#6b7280">Hotels · Bookings</text>
+  <text x="135" y="650" text-anchor="middle" font-size="11" fill="#6b7280">My Bookings</text>
+
+  <!-- Chat Widget -->
+  <rect x="265" y="575" width="190" height="90" rx="10" fill="white" stroke="#7c3aed" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="360" y="600" text-anchor="middle" font-size="14" font-weight="700" fill="#7c3aed">💬 Chat Widget</text>
+  <text x="360" y="618" text-anchor="middle" font-size="11" fill="#6b7280">AG-UI Client</text>
+  <text x="360" y="634" text-anchor="middle" font-size="11" fill="#6b7280">SSE Streaming</text>
+  <text x="360" y="650" text-anchor="middle" font-size="11" fill="#6b7280">Feature-toggled</text>
+
+  <!-- Console Agent -->
+  <rect x="490" y="575" width="190" height="90" rx="10" fill="white" stroke="#d97706" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="585" y="600" text-anchor="middle" font-size="14" font-weight="700" fill="#d97706">🖥️ Console Agent</text>
+  <text x="585" y="618" text-anchor="middle" font-size="11" fill="#6b7280">MCP Client</text>
+  <text x="585" y="634" text-anchor="middle" font-size="11" fill="#6b7280">.NET 10 CLI</text>
+  <text x="585" y="650" text-anchor="middle" font-size="11" fill="#6b7280">Interactive Chat</text>
+
+  <!-- Azure OpenAI -->
+  <rect x="820" y="160" width="240" height="130" rx="14" fill="white" stroke="#0078D4" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="820" y="160" width="240" height="32" rx="14" fill="#0078D4"/>
+  <rect x="820" y="180" width="240" height="12" fill="#0078D4"/>
+  <text x="940" y="182" text-anchor="middle" font-size="13" font-weight="700" fill="white">🧠 Azure OpenAI</text>
+  <text x="940" y="215" text-anchor="middle" font-size="13" font-weight="600" fill="#1e293b">gpt-4o</text>
+  <text x="940" y="237" text-anchor="middle" font-size="10" fill="#6b7280">Chat Completions</text>
+  <text x="940" y="253" text-anchor="middle" font-size="10" fill="#6b7280">Function Calling</text>
+  <text x="940" y="269" text-anchor="middle" font-size="10" fill="#6b7280">Streaming Responses</text>
+
+  <!-- Connection arrows -->
+  <!-- REST API to Browser -->
+  <line x1="135" y1="575" x2="135" y2="552" stroke="#16a34a" stroke-width="2"/>
+  <polygon points="135,548 130,555 140,555" fill="#16a34a"/>
+  <text x="152" y="566" font-size="9" fill="#16a34a" font-weight="600">REST</text>
+
+  <!-- Chat Widget to AG-UI -->
+  <line x1="360" y1="575" x2="360" y2="552" stroke="#7c3aed" stroke-width="2"/>
+  <polygon points="360,548 355,555 365,555" fill="#7c3aed"/>
+  <text x="377" y="566" font-size="9" fill="#7c3aed" font-weight="600">SSE</text>
+
+  <!-- Console Agent to MCP -->
+  <line x1="585" y1="575" x2="400" y2="552" stroke="#d97706" stroke-width="2" stroke-dasharray="5,3"/>
+  <polygon points="398,548 393,556 403,556" fill="#d97706"/>
+  <text x="505" y="565" font-size="9" fill="#d97706" font-weight="600">MCP/HTTP</text>
+
+  <!-- Backend to Azure OpenAI -->
+  <line x1="740" y1="225" x2="818" y2="225" stroke="#0078D4" stroke-width="2"/>
+  <polygon points="816,220 823,225 816,230" fill="#0078D4"/>
+  <text x="779" y="218" text-anchor="middle" font-size="9" fill="#0078D4" font-weight="600">API Key</text>
+
+  <!-- Console Agent to Azure OpenAI -->
+  <line x1="680" y1="610" x2="940" y2="295" stroke="#0078D4" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <polygon points="938,290 933,298 943,298" fill="#0078D4"/>
+  <text x="840" y="465" font-size="9" fill="#0078D4" font-weight="600">API Key</text>
+
+  <!-- Legend -->
+  <rect x="820" y="575" width="240" height="120" rx="10" fill="white" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="940" y="597" text-anchor="middle" font-size="12" font-weight="700" fill="#475569">Legend</text>
+  <line x1="840" y1="607" x2="870" y2="607" stroke="#16a34a" stroke-width="2"/>
+  <text x="878" y="611" font-size="10" fill="#4b5563">REST / HTTP</text>
+  <line x1="840" y1="627" x2="870" y2="627" stroke="#7c3aed" stroke-width="2"/>
+  <text x="878" y="631" font-size="10" fill="#4b5563">AG-UI (SSE)</text>
+  <line x1="840" y1="647" x2="870" y2="647" stroke="#d97706" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="878" y="651" font-size="10" fill="#4b5563">MCP (HTTP+SSE)</text>
+  <line x1="840" y1="667" x2="870" y2="667" stroke="#0078D4" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="878" y="671" font-size="10" fill="#4b5563">Azure OpenAI</text>
+  <line x1="840" y1="687" x2="870" y2="687" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4,2"/>
+  <text x="878" y="691" font-size="10" fill="#4b5563">Internal Layer</text>
+</svg>

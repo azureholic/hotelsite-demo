@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <filter id="shadow" x="-2%" y="-2%" width="104%" height="104%">
+      <feDropShadow dx="1" dy="2" stdDeviation="3" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="520" rx="12" fill="#f9fafb"/>
+  <text x="450" y="35" text-anchor="middle" font-size="20" font-weight="700" fill="#1e293b">AG-UI Protocol — Chat Widget Flow</text>
+
+  <!-- Browser column -->
+  <rect x="60" y="60" width="200" height="440" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="160" y="86" text-anchor="middle" font-size="14" font-weight="700" fill="#7c3aed">💬 Chat Widget</text>
+  <text x="160" y="102" text-anchor="middle" font-size="10" fill="#6b7280">React (Browser)</text>
+
+  <!-- Backend column -->
+  <rect x="350" y="60" width="200" height="440" rx="10" fill="#f0f0ff" stroke="#512BD4" stroke-width="1.5"/>
+  <text x="450" y="86" text-anchor="middle" font-size="14" font-weight="700" fill="#512BD4">⚙️ AG-UI Agent</text>
+  <text x="450" y="102" text-anchor="middle" font-size="10" fill="#6b7280">ASP.NET Core</text>
+
+  <!-- Azure OpenAI column -->
+  <rect x="640" y="60" width="200" height="440" rx="10" fill="#e8f4fd" stroke="#0078D4" stroke-width="1.5"/>
+  <text x="740" y="86" text-anchor="middle" font-size="14" font-weight="700" fill="#0078D4">🧠 Azure OpenAI</text>
+  <text x="740" y="102" text-anchor="middle" font-size="10" fill="#6b7280">gpt-4o</text>
+
+  <!-- Lifelines -->
+  <line x1="160" y1="112" x2="160" y2="490" stroke="#7c3aed" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
+  <line x1="450" y1="112" x2="450" y2="490" stroke="#512BD4" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
+  <line x1="740" y1="112" x2="740" y2="490" stroke="#0078D4" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
+
+  <!-- Step 1: User message -->
+  <rect x="90" y="128" width="140" height="30" rx="6" fill="white" stroke="#7c3aed" stroke-width="1"/>
+  <text x="160" y="148" text-anchor="middle" font-size="10" font-weight="600" fill="#7c3aed">User types message</text>
+
+  <!-- Step 2: POST /agent-chat -->
+  <line x1="260" y1="175" x2="350" y2="175" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrowPurple)"/>
+  <rect x="264" y="162" width="82" height="16" rx="3" fill="#7c3aed"/>
+  <text x="305" y="174" text-anchor="middle" font-size="9" font-weight="600" fill="white">POST</text>
+  <text x="305" y="190" text-anchor="middle" font-size="9" fill="#6b7280">/agent-chat</text>
+  <text x="305" y="202" text-anchor="middle" font-size="8" fill="#9ca3af">{messages: [...]}</text>
+  <defs>
+    <marker id="arrowPurple" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#7c3aed"/>
+    </marker>
+    <marker id="arrowBlue" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#0078D4"/>
+    </marker>
+    <marker id="arrowDotnet" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#512BD4"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#16a34a"/>
+    </marker>
+    <marker id="arrowOrange" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#d97706"/>
+    </marker>
+  </defs>
+
+  <!-- Step 3: Chat completion request -->
+  <line x1="550" y1="230" x2="640" y2="230" stroke="#0078D4" stroke-width="2" marker-end="url(#arrowBlue)"/>
+  <text x="595" y="224" text-anchor="middle" font-size="9" fill="#0078D4" font-weight="600">Chat completion</text>
+  <text x="595" y="244" text-anchor="middle" font-size="8" fill="#9ca3af">+ tool definitions</text>
+
+  <!-- Step 4: Tool call (optional) -->
+  <rect x="372" y="264" width="156" height="50" rx="6" fill="#fff7ed" stroke="#d97706" stroke-width="1"/>
+  <text x="450" y="282" text-anchor="middle" font-size="10" font-weight="600" fill="#d97706">🔧 Tool Call</text>
+  <text x="450" y="296" text-anchor="middle" font-size="9" fill="#6b7280">e.g. SearchHotels(</text>
+  <text x="450" y="308" text-anchor="middle" font-size="9" fill="#6b7280">{city: "Paris"})</text>
+
+  <line x1="640" y1="275" x2="550" y2="275" stroke="#d97706" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arrowOrange)"/>
+  <text x="595" y="268" text-anchor="middle" font-size="8" fill="#d97706">tool_call</text>
+
+  <!-- Step 5: Tool result back to OpenAI -->
+  <line x1="550" y1="330" x2="640" y2="330" stroke="#16a34a" stroke-width="1.5" marker-end="url(#arrowGreen)"/>
+  <text x="595" y="324" text-anchor="middle" font-size="8" fill="#16a34a">tool_result (JSON)</text>
+
+  <!-- Step 6: SSE streaming back -->
+  <rect x="268" y="358" width="78" height="16" rx="3" fill="#16a34a"/>
+  <text x="307" y="370" text-anchor="middle" font-size="9" font-weight="600" fill="white">SSE</text>
+
+  <line x1="350" y1="380" x2="260" y2="380" stroke="#16a34a" stroke-width="2" marker-end="url(#arrowGreen)"/>
+  <text x="305" y="394" text-anchor="middle" font-size="8" fill="#6b7280">TEXT_MESSAGE_CONTENT</text>
+  <text x="305" y="406" text-anchor="middle" font-size="8" fill="#9ca3af">{delta: "I found 5 hotels..."}</text>
+
+  <!-- Streaming from OpenAI -->
+  <line x1="640" y1="370" x2="550" y2="370" stroke="#0078D4" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <text x="595" y="364" text-anchor="middle" font-size="8" fill="#0078D4">stream tokens</text>
+
+  <!-- Step 7: More SSE events -->
+  <line x1="350" y1="420" x2="260" y2="420" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <text x="305" y="434" text-anchor="middle" font-size="8" fill="#9ca3af">{delta: "in Paris..."}</text>
+
+  <!-- Step 8: Done -->
+  <line x1="350" y1="456" x2="260" y2="456" stroke="#512BD4" stroke-width="2" marker-end="url(#arrowDotnet)"/>
+  <rect x="270" y="447" width="76" height="16" rx="3" fill="#512BD4"/>
+  <text x="308" y="459" text-anchor="middle" font-size="9" font-weight="600" fill="white">[DONE]</text>
+
+  <!-- UI renders -->
+  <rect x="90" y="470" width="140" height="24" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="1"/>
+  <text x="160" y="486" text-anchor="middle" font-size="10" font-weight="600" fill="#16a34a">✓ UI renders response</text>
+</svg>

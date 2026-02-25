@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <filter id="shadow" x="-2%" y="-2%" width="104%" height="104%">
+      <feDropShadow dx="1" dy="2" stdDeviation="3" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="360" rx="12" fill="#f9fafb"/>
+  <text x="450" y="35" text-anchor="middle" font-size="20" font-weight="700" fill="#1e293b">Technology Stack</text>
+
+  <!-- Backend column -->
+  <rect x="40" y="55" width="250" height="280" rx="12" fill="white" stroke="#512BD4" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="40" y="55" width="250" height="32" rx="12" fill="#512BD4"/>
+  <rect x="40" y="75" width="250" height="12" fill="#512BD4"/>
+  <text x="165" y="77" text-anchor="middle" font-size="13" font-weight="700" fill="white">Backend</text>
+
+  <rect x="60" y="100" width="210" height="28" rx="6" fill="#ede9fe"/>
+  <text x="165" y="119" text-anchor="middle" font-size="11" font-weight="600" fill="#512BD4">.NET 10 · ASP.NET Core</text>
+
+  <rect x="60" y="138" width="210" height="28" rx="6" fill="#e0f2fe"/>
+  <text x="165" y="157" text-anchor="middle" font-size="11" font-weight="600" fill="#0284c7">OpenAPI (built-in)</text>
+
+  <rect x="60" y="176" width="210" height="28" rx="6" fill="#fef3c7"/>
+  <text x="165" y="195" text-anchor="middle" font-size="11" font-weight="600" fill="#d97706">MCP Server (1.0.0-rc.1)</text>
+
+  <rect x="60" y="214" width="210" height="28" rx="6" fill="#ede9fe"/>
+  <text x="165" y="233" text-anchor="middle" font-size="11" font-weight="600" fill="#7c3aed">Microsoft Agent Fw</text>
+
+  <rect x="60" y="252" width="210" height="28" rx="6" fill="#dbeafe"/>
+  <text x="165" y="271" text-anchor="middle" font-size="11" font-weight="600" fill="#2563eb">Azure.AI.OpenAI SDK</text>
+
+  <rect x="60" y="290" width="210" height="28" rx="6" fill="#f0fdf4"/>
+  <text x="165" y="309" text-anchor="middle" font-size="11" font-weight="600" fill="#16a34a">Microsoft.Extensions.AI</text>
+
+  <!-- Frontend column -->
+  <rect x="325" y="55" width="250" height="280" rx="12" fill="white" stroke="#20232a" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="325" y="55" width="250" height="32" rx="12" fill="#20232a"/>
+  <rect x="325" y="75" width="250" height="12" fill="#20232a"/>
+  <text x="450" y="77" text-anchor="middle" font-size="13" font-weight="700" fill="#61DAFB">Frontend</text>
+
+  <rect x="345" y="100" width="210" height="28" rx="6" fill="#e0f7fa"/>
+  <!-- React atom mini -->
+  <ellipse cx="370" cy="114" rx="10" ry="4" fill="none" stroke="#61DAFB" stroke-width="1" transform="rotate(-30,370,114)"/>
+  <ellipse cx="370" cy="114" rx="10" ry="4" fill="none" stroke="#61DAFB" stroke-width="1" transform="rotate(30,370,114)"/>
+  <ellipse cx="370" cy="114" rx="10" ry="4" fill="none" stroke="#61DAFB" stroke-width="1"/>
+  <circle cx="370" cy="114" r="1.5" fill="#61DAFB"/>
+  <text x="390" y="119" font-size="11" font-weight="600" fill="#0e7490">React 19</text>
+
+  <rect x="345" y="138" width="210" height="28" rx="6" fill="#eff6ff"/>
+  <text x="450" y="157" text-anchor="middle" font-size="11" font-weight="600" fill="#3178C6">TypeScript 5.9</text>
+
+  <rect x="345" y="176" width="210" height="28" rx="6" fill="#ecfdf5"/>
+  <text x="450" y="195" text-anchor="middle" font-size="11" font-weight="600" fill="#06B6D4">Tailwind CSS 4</text>
+
+  <rect x="345" y="214" width="210" height="28" rx="6" fill="#f5f3ff"/>
+  <text x="450" y="233" text-anchor="middle" font-size="11" font-weight="600" fill="#a855f7">⚡ Vite 7</text>
+
+  <rect x="345" y="252" width="210" height="28" rx="6" fill="#fef2f2"/>
+  <text x="450" y="271" text-anchor="middle" font-size="11" font-weight="600" fill="#dc2626">React Router 7</text>
+
+  <rect x="345" y="290" width="210" height="28" rx="6" fill="#fdf4ff"/>
+  <text x="450" y="309" text-anchor="middle" font-size="11" font-weight="600" fill="#7c3aed">AG-UI SSE Client</text>
+
+  <!-- Infrastructure column -->
+  <rect x="610" y="55" width="250" height="280" rx="12" fill="white" stroke="#0078D4" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="610" y="55" width="250" height="32" rx="12" fill="#0078D4"/>
+  <rect x="610" y="75" width="250" height="12" fill="#0078D4"/>
+  <text x="735" y="77" text-anchor="middle" font-size="13" font-weight="700" fill="white">Infrastructure</text>
+
+  <rect x="630" y="100" width="210" height="28" rx="6" fill="#dbeafe"/>
+  <text x="735" y="119" text-anchor="middle" font-size="11" font-weight="600" fill="#0078D4">☁ Azure App Service</text>
+
+  <rect x="630" y="138" width="210" height="28" rx="6" fill="#e8f4fd"/>
+  <text x="735" y="157" text-anchor="middle" font-size="11" font-weight="600" fill="#0078D4">🧠 Azure OpenAI</text>
+
+  <rect x="630" y="176" width="210" height="28" rx="6" fill="#fff7ed"/>
+  <text x="735" y="195" text-anchor="middle" font-size="11" font-weight="600" fill="#ea580c">Bicep (IaC)</text>
+
+  <rect x="630" y="214" width="210" height="28" rx="6" fill="#f8fafc"/>
+  <text x="735" y="233" text-anchor="middle" font-size="11" font-weight="600" fill="#1e293b">⚙️ GitHub Actions</text>
+
+  <rect x="630" y="252" width="210" height="28" rx="6" fill="#f8fafc"/>
+  <text x="735" y="271" text-anchor="middle" font-size="11" font-weight="600" fill="#1e293b">PowerShell Deploy</text>
+
+  <rect x="630" y="290" width="210" height="28" rx="6" fill="#f1f5f9"/>
+  <text x="735" y="309" text-anchor="middle" font-size="11" font-weight="600" fill="#475569">Linux (single service)</text>
+</svg>

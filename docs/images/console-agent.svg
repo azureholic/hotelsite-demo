@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <filter id="shadow" x="-2%" y="-2%" width="104%" height="104%">
+      <feDropShadow dx="1" dy="2" stdDeviation="3" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrowOrange" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#d97706"/>
+    </marker>
+    <marker id="arrowBlue" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#0078D4"/>
+    </marker>
+    <marker id="arrowGray" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#6b7280"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="420" rx="12" fill="#f9fafb"/>
+  <text x="450" y="35" text-anchor="middle" font-size="20" font-weight="700" fill="#1e293b">Console Agent — MCP Architecture</text>
+
+  <!-- Console Agent Box -->
+  <rect x="40" y="60" width="360" height="330" rx="14" fill="white" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="40" y="60" width="360" height="34" rx="14" fill="#d97706"/>
+  <rect x="40" y="82" width="360" height="12" fill="#d97706"/>
+  <text x="60" y="84" font-size="14" font-weight="700" fill="white">🖥️ Console Agent (.NET 10)</text>
+
+  <!-- User Input -->
+  <rect x="60" y="108" width="140" height="50" rx="8" fill="#f9fafb" stroke="#6b7280" stroke-width="1"/>
+  <text x="130" y="130" text-anchor="middle" font-size="11" font-weight="600" fill="#374151">⌨️ User Input</text>
+  <text x="130" y="146" text-anchor="middle" font-size="9" fill="#6b7280">stdin (interactive)</text>
+
+  <!-- ChatClientBuilder -->
+  <rect x="60" y="174" width="320" height="70" rx="8" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.2"/>
+  <text x="220" y="196" text-anchor="middle" font-size="12" font-weight="700" fill="#7c3aed">ChatClientBuilder Pipeline</text>
+  <text x="220" y="214" text-anchor="middle" font-size="10" fill="#6b7280">UseFunctionInvocation() · GetStreamingResponseAsync()</text>
+  <text x="220" y="230" text-anchor="middle" font-size="10" fill="#6b7280">Microsoft.Extensions.AI</text>
+
+  <!-- MCP Client -->
+  <rect x="60" y="260" width="320" height="56" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="1.2"/>
+  <text x="220" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="#d97706">🔌 MCP Client</text>
+  <text x="220" y="298" text-anchor="middle" font-size="10" fill="#6b7280">McpClient.CreateAsync() · HttpClientTransport</text>
+  <text x="220" y="310" text-anchor="middle" font-size="9" fill="#9ca3af">Auto-discovers tools via ListToolsAsync()</text>
+
+  <!-- Console Output -->
+  <rect x="60" y="332" width="140" height="44" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1"/>
+  <text x="130" y="352" text-anchor="middle" font-size="11" font-weight="600" fill="#16a34a">📝 Console Output</text>
+  <text x="130" y="366" text-anchor="middle" font-size="9" fill="#6b7280">stdout (streaming)</text>
+
+  <!-- Arrow: User Input → ChatClient -->
+  <line x1="130" y1="158" x2="130" y2="172" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrowGray)"/>
+
+  <!-- Arrow: ChatClient ↔ MCP Client -->
+  <line x1="220" y1="244" x2="220" y2="258" stroke="#d97706" stroke-width="1.5" marker-end="url(#arrowOrange)"/>
+  <text x="245" y="254" font-size="8" fill="#d97706">tool calls</text>
+
+  <!-- Arrow: ChatClient → Output -->
+  <line x1="130" y1="244" x2="130" y2="330" stroke="#16a34a" stroke-width="1.5" marker-end="url(#arrowGray)"/>
+  <text x="116" y="290" font-size="8" fill="#16a34a" transform="rotate(-90,116,290)">stream</text>
+
+  <!-- Backend MCP Server -->
+  <rect x="500" y="150" width="220" height="140" rx="14" fill="white" stroke="#512BD4" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="500" y="150" width="220" height="32" rx="14" fill="#512BD4"/>
+  <rect x="500" y="170" width="220" height="12" fill="#512BD4"/>
+  <text x="520" y="172" font-size="12" font-weight="700" fill="white">⚙️ Backend /mcp</text>
+
+  <!-- Tools list -->
+  <text x="610" y="204" text-anchor="middle" font-size="10" font-weight="600" fill="#512BD4">MCP Tools (7)</text>
+  <text x="610" y="220" text-anchor="middle" font-size="9" fill="#6b7280">SearchHotels · GetHotelDetails</text>
+  <text x="610" y="234" text-anchor="middle" font-size="9" fill="#6b7280">GetAvailableRooms · CreateBooking</text>
+  <text x="610" y="248" text-anchor="middle" font-size="9" fill="#6b7280">GetBooking · ListBookings</text>
+  <text x="610" y="262" text-anchor="middle" font-size="9" fill="#6b7280">CancelBooking</text>
+
+  <!-- Arrow: MCP Client → Backend -->
+  <line x1="380" y1="288" x2="498" y2="230" stroke="#d97706" stroke-width="2" marker-end="url(#arrowOrange)"/>
+  <text x="440" y="248" font-size="9" fill="#d97706" font-weight="600">HTTP</text>
+
+  <!-- Azure OpenAI -->
+  <rect x="500" y="330" width="220" height="70" rx="14" fill="white" stroke="#0078D4" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="500" y="330" width="220" height="30" rx="14" fill="#0078D4"/>
+  <rect x="500" y="348" width="220" height="12" fill="#0078D4"/>
+  <text x="520" y="350" font-size="12" font-weight="700" fill="white">🧠 Azure OpenAI</text>
+  <text x="610" y="380" text-anchor="middle" font-size="11" font-weight="600" fill="#1e293b">gpt-4o</text>
+
+  <!-- Arrow: ChatClient → Azure OpenAI -->
+  <line x1="380" y1="210" x2="498" y2="365" stroke="#0078D4" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrowBlue)"/>
+  <text x="418" y="310" font-size="9" fill="#0078D4" font-weight="600">API Key</text>
+
+  <!-- Flow labels -->
+  <rect x="770" y="150" width="100" height="180" rx="8" fill="white" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="820" y="172" text-anchor="middle" font-size="11" font-weight="700" fill="#475569">Flow</text>
+  <text x="820" y="194" text-anchor="middle" font-size="10" fill="#6b7280">1. User types</text>
+  <text x="820" y="212" text-anchor="middle" font-size="10" fill="#6b7280">2. LLM reasons</text>
+  <text x="820" y="230" text-anchor="middle" font-size="10" fill="#6b7280">3. Tool call →</text>
+  <text x="820" y="248" text-anchor="middle" font-size="10" fill="#6b7280">   MCP server</text>
+  <text x="820" y="266" text-anchor="middle" font-size="10" fill="#6b7280">4. Result → LLM</text>
+  <text x="820" y="284" text-anchor="middle" font-size="10" fill="#6b7280">5. LLM responds</text>
+  <text x="820" y="302" text-anchor="middle" font-size="10" fill="#6b7280">6. Stream to</text>
+  <text x="820" y="320" text-anchor="middle" font-size="10" fill="#6b7280">   console</text>
+</svg>

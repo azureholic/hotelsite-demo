@@ -6,49 +6,7 @@ This document describes the architecture of the StayBright Hotels demo applicati
 
 ## High-Level Overview
 
-```
-┌──────────────────────────────────────────────────────────────────┐
-│                        Azure App Service                         │
-│                                                                  │
-│  ┌─────────────────────────────────────────────────────────────┐ │
-│  │              ASP.NET Core Backend (net10.0)                 │ │
-│  │                                                             │ │
-│  │  ┌──────────┐  ┌──────────┐  ┌───────────┐  ┌───────────┐ │ │
-│  │  │ REST API │  │MCP Server│  │  AG-UI    │  │  Feature  │ │ │
-│  │  │ /api/*   │  │  /mcp    │  │/agent-chat│  │  Toggles  │ │ │
-│  │  └────┬─────┘  └────┬─────┘  └─────┬─────┘  └───────────┘ │ │
-│  │       │              │              │                       │ │
-│  │  ┌────┴──────────────┴──────────────┴────────────────────┐ │ │
-│  │  │         Services (HotelService, BookingService)       │ │ │
-│  │  └───────────────────────┬───────────────────────────────┘ │ │
-│  │                          │                                 │ │
-│  │                   ┌──────┴──────┐                          │ │
-│  │                   │  In-Memory  │                          │ │
-│  │                   │  Seed Data  │                          │ │
-│  │                   │ (100 hotels)│                          │ │
-│  │                   └─────────────┘                          │ │
-│  └─────────────────────────────────────────────────────────────┘ │
-│                                                                  │
-│  ┌─────────────────────────────────────────────────────────────┐ │
-│  │          React SPA (served as static files from wwwroot)    │ │
-│  └─────────────────────────────────────────────────────────────┘ │
-└──────────────────────────────────────────────────────────────────┘
-         │                │                │
-         │ REST           │ SSE            │ MCP/HTTP
-         ▼                ▼                ▼
-   ┌──────────┐   ┌──────────────┐  ┌──────────────┐
-   │  Browser  │   │ Chat Widget  │  │Console Agent │
-   │(React UI) │   │  (AG-UI)     │  │  (MCP Client)│
-   └──────────┘   └──────────────┘  └──────────────┘
-
-                                         │
-         ┌───────────────────────────────┘
-         ▼
-  ┌──────────────┐
-  │ Azure OpenAI │
-  │   (gpt-4o)   │
-  └──────────────┘
-```
+![Architecture Overview](docs/images/architecture-overview.svg)
 
 ---
 
@@ -141,32 +99,7 @@ Visibility is controlled by the backend feature toggle — the `Layout` componen
 
 A standalone interactive chat agent that connects to the backend's MCP server:
 
-```
-┌────────────────────────────────────────────────────┐
-│                  Console Agent                      │
-│                                                     │
-│  ┌─────────────┐    ┌──────────────────────────┐   │
-│  │  User Input  │───▶│  ChatClientBuilder       │   │
-│  │  (stdin)     │    │  + UseFunctionInvocation  │   │
-│  └─────────────┘    └──────────┬───────────────┘   │
-│                                │                    │
-│                     ┌──────────┴───────────┐        │
-│                     │   Azure OpenAI       │        │
-│                     │   (gpt-4o)           │        │
-│                     └──────────┬───────────┘        │
-│                                │                    │
-│                     ┌──────────┴───────────┐        │
-│                     │  MCP Client Tools    │        │
-│                     │  (auto-discovered)   │        │
-│                     └──────────┬───────────┘        │
-│                                │                    │
-└────────────────────────────────┼────────────────────┘
-                                 │ HTTP
-                                 ▼
-                        ┌────────────────┐
-                        │ Backend /mcp   │
-                        └────────────────┘
-```
+![Console Agent Architecture](docs/images/console-agent.svg)
 
 **Key pattern:** The console agent dynamically discovers tools from the MCP server via `ListToolsAsync()`. Each `McpClientTool` implements the `AITool` interface from `Microsoft.Extensions.AI`, enabling seamless integration with the `ChatClientBuilder` pipeline.
 
@@ -209,27 +142,7 @@ Tools are defined in `McpTools/HotelTools.cs` using `[McpServerToolType]` and `[
 
 The AG-UI protocol (from the Microsoft Agent Framework) enables streaming agent-to-user communication over SSE:
 
-```
-Browser                    Backend                  Azure OpenAI
-  │                           │                         │
-  │  POST /agent-chat         │                         │
-  │  {messages: [...]}        │                         │
-  │ ─────────────────────────▶│                         │
-  │                           │  Chat completion        │
-  │                           │  (with tools)           │
-  │                           │────────────────────────▶│
-  │                           │                         │
-  │  SSE: TEXT_MESSAGE_CONTENT│  Streaming response     │
-  │  {delta: "Sure, I can..."}│◀────────────────────────│
-  │ ◀─────────────────────────│                         │
-  │                           │                         │
-  │  SSE: TEXT_MESSAGE_CONTENT│  (tool call if needed)  │
-  │  {delta: "help you..."}  │◀───────────────────────▶│
-  │ ◀─────────────────────────│                         │
-  │                           │                         │
-  │  SSE: [DONE]              │                         │
-  │ ◀─────────────────────────│                         │
-```
+![AG-UI Protocol Flow](docs/images/agui-flow.svg)
 
 The agent has access to the same 7 hotel tools (defined in `AgentTools/HotelAgentTools.cs` via `AIFunctionFactory.Create()`) and can perform actions like searching hotels or creating bookings during conversation.
 
@@ -326,35 +239,7 @@ User types message → Console Agent → MCP Client discovers tools
 
 The entire application deploys as a **single Azure App Service**:
 
-```
-┌─────────────────────────────────────────────────┐
-│           Azure App Service (Linux)              │
-│           .NET 10.0 Runtime                      │
-│                                                  │
-│  ┌────────────────────────────────────────────┐  │
-│  │  ASP.NET Core Process                      │  │
-│  │                                            │  │
-│  │  /api/*          → REST Controllers        │  │
-│  │  /mcp            → MCP Server (SSE)        │  │
-│  │  /agent-chat     → AG-UI Agent (SSE)       │  │
-│  │  /openapi/v1.json→ OpenAPI Spec            │  │
-│  │  /*              → wwwroot/ (React SPA)    │  │
-│  │                    + SPA fallback           │  │
-│  └────────────────────────────────────────────┘  │
-│                                                  │
-│  Environment Variables:                          │
-│  ├── AZURE_OPENAI_ENDPOINT                       │
-│  ├── AZURE_OPENAI_API_KEY                        │
-│  └── AZURE_OPENAI_DEPLOYMENT_NAME                │
-└─────────────────────────────────────────────────┘
-                    │
-                    │ HTTPS (API key auth)
-                    ▼
-          ┌───────────────────┐
-          │  Azure OpenAI     │
-          │  (gpt-4o)         │
-          └───────────────────┘
-```
+![Deployment Architecture](docs/images/deployment.svg)
 
 ### Infrastructure as Code (Bicep)
 
@@ -390,20 +275,7 @@ The entire application deploys as a **single Azure App Service**:
 
 ### Local Architecture
 
-```
-┌──────────────┐         ┌──────────────────┐        ┌──────────────┐
-│ Vite Dev     │ proxy   │ ASP.NET Core     │        │ Azure OpenAI │
-│ :5173        │────────▶│ :5000            │───────▶│ (cloud)      │
-│              │ /api/*  │                  │        │              │
-│ React SPA   │ /agent-*│ REST + MCP + AGUI│        │              │
-└──────────────┘         └──────────────────┘        └──────────────┘
-                                  ▲
-                                  │ MCP/HTTP
-                         ┌────────┴─────────┐
-                         │  Console Agent   │
-                         │  (dotnet run)    │
-                         └──────────────────┘
-```
+![Local Development Setup](docs/images/dev-setup.svg)
 
 - **Frontend** runs on Vite dev server (`:5173`) with hot reload, proxying API calls to the backend
 - **Backend** runs on Kestrel (`:5000`) serving REST, MCP, and AG-UI endpoints
@@ -421,6 +293,8 @@ The entire application deploys as a **single Azure App Service**:
 ---
 
 ## Technology Stack Summary
+
+![Technology Stack](docs/images/tech-stack.svg)
 
 | Layer | Technology | Version |
 |-------|-----------|---------|
