@@ -1,0 +1,30 @@
+# ── .NET ──
+bin/
+obj/
+.publish/
+.publish.zip
+*.user
+*.suo
+*.cache
+
+# ── Node / Frontend ──
+node_modules/
+frontend/dist/
+
+# ── Backend wwwroot (built from frontend) ──
+backend/HotelBooking.Api/wwwroot/
+
+# ── IDE ──
+.vs/
+.vscode/
+*.swp
+*~
+
+# ── OS ──
+.DS_Store
+Thumbs.db
+
+# ── Secrets ──
+appsettings.Development.json
+.env
+*.pfx

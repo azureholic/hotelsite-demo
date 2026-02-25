@@ -1,0 +1,83 @@
+name: Deploy to Azure
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  AZURE_RESOURCE_GROUP: ${{ vars.AZURE_RESOURCE_GROUP }}
+  APP_NAME: ${{ vars.APP_NAME }}
+  LOCATION: ${{ vars.AZURE_LOCATION || 'westeurope' }}
+  DOTNET_VERSION: '10.0.x'
+  NODE_VERSION: '22'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # ── Setup toolchains ──
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      # ── Build Frontend ──
+      - name: Build frontend
+        working-directory: frontend
+        run: |
+          npm ci
+          npx vite build
+
+      # ── Copy frontend to backend wwwroot ──
+      - name: Copy frontend to backend
+        run: |
+          rm -rf backend/HotelBooking.Api/wwwroot
+          cp -r frontend/dist backend/HotelBooking.Api/wwwroot
+
+      # ── Publish Backend ──
+      - name: Publish backend
+        run: |
+          dotnet publish backend/HotelBooking.Api/HotelBooking.Api.csproj \
+            -c Release -o ./publish --nologo
+
+      # ── Azure Login ──
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      # ── Deploy Infrastructure (Bicep) ──
+      - name: Deploy infrastructure
+        uses: azure/arm-deploy@v2
+        with:
+          resourceGroupName: ${{ env.AZURE_RESOURCE_GROUP }}
+          template: infra/main.bicep
+          parameters: >
+            appName=${{ env.APP_NAME }}
+            azureOpenAiEndpoint=${{ secrets.AZURE_OPENAI_ENDPOINT }}
+            azureOpenAiApiKey=${{ secrets.AZURE_OPENAI_API_KEY }}
+            azureOpenAiDeploymentName=${{ vars.AZURE_OPENAI_DEPLOYMENT_NAME || 'gpt-4o' }}
+
+      # ── Deploy Application ──
+      - name: Deploy to App Service
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: ${{ env.APP_NAME }}-app
+          package: ./publish
