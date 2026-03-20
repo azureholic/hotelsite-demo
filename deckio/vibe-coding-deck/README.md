@@ -54,11 +54,11 @@ Use prompts like these instead of editing files yourself:
 - `Create a new slide based on my sketch.`
 - `Inspect the current progress, tell me what looks off, and make visual improvements.`
 
-## GitHub Copilot CLI
+## GitHub Copilot
 
-Open GitHub Copilot CLI in this repo:
+Open GitHub Copilot in this repo:
 
-Do you prefer TUIs? This works with GitHub Copilot CLI too.
+Do you prefer TUIs? This works with GitHub Copilot too.
 
 ```bash
 gh copilot --yolo

@@ -51,7 +51,7 @@ export default function PrerequisitesSlide({ index, project }) {
         </div>
       </div>
 
-      <BottomBar text="Vibe Coding with GitHub Copilot CLI" />
+      <BottomBar text="Vibe Coding with GitHub Copilot" />
     </Slide>
   )
 }

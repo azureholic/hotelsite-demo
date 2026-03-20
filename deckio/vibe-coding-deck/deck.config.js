@@ -11,7 +11,7 @@ import { GenericThankYouSlide as ThankYouSlide } from '@deckio/deck-engine'
 
 export default {
   id: 'vibe-coding-deck',
-  title: 'Vibe Coding with GitHub Copilot CLI',
+  title: 'Vibe Coding with GitHub Copilot',
   subtitle: 'Vibe Coding Hackathon',
   description: 'Intro, capabilities, Tim\'s concrete case, hack expectations, prerequisites, and kickoff plan.',
   meta: {

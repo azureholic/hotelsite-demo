@@ -19,7 +19,7 @@ export default function CoverSlide() {
           <p className={styles.eyebrow}>Vibe Coding Hackathon</p>
           <h1>
             Vibe Coding with<br />
-            <span className={styles.highlight}>GitHub Copilot CLI</span>
+            <span className={styles.highlight}>GitHub Copilot</span>
           </h1>
           <p className={styles.subtitle}>
             Intro, capabilities, Tim&apos;s concrete case, hack expectations,
@@ -45,7 +45,7 @@ export default function CoverSlide() {
         </div>
       </div>
 
-      <BottomBar text="Vibe Coding with GitHub Copilot CLI" />
+      <BottomBar text="Vibe Coding with GitHub Copilot" />
     </Slide>
   )
 }
