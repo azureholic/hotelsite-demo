@@ -1,0 +1,145 @@
+.featureIdeasSlide {
+  background: var(--background);
+  padding: 0 0 44px 0;
+}
+
+.orb1 {
+  width: 420px;
+  height: 420px;
+  top: -100px;
+  right: -60px;
+  background: radial-gradient(
+    circle at 40% 40%,
+    var(--accent),
+    color-mix(in srgb, var(--green) 30%, transparent) 50%,
+    transparent 70%
+  );
+}
+
+.orb2 {
+  width: 320px;
+  height: 320px;
+  bottom: -40px;
+  right: 100px;
+  background: radial-gradient(
+    circle at 50% 50%,
+    var(--purple-deep),
+    color-mix(in srgb, var(--purple-deep) 30%, transparent) 60%,
+    transparent 75%
+  );
+}
+
+.body {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.header {
+  max-width: 700px;
+}
+
+.eyebrow {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.header h1 {
+  font-size: clamp(36px, 4.5vw, 56px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  font-size: clamp(15px, 1.6vw, 18px);
+  font-weight: 300;
+  color: var(--muted-foreground);
+  line-height: 1.65;
+}
+
+.subtitle code {
+  font-size: inherit;
+  background: var(--surface-overlay);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--accent);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  background: var(--secondary);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--purple), var(--accent));
+  opacity: 0.6;
+}
+
+.featureNumber {
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--accent);
+  opacity: 0.4;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.cardTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 10px;
+}
+
+.cardText {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--muted-foreground);
+  line-height: 1.6;
+}
+
+.callout {
+  background: var(--surface-overlay);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 24px;
+  backdrop-filter: blur(8px);
+}
+
+.callout p {
+  font-size: 14px;
+  color: var(--foreground);
+  line-height: 1.6;
+}
+
+.callout strong {
+  color: var(--accent);
+}
+
+.callout em {
+  color: var(--muted-foreground);
+}
