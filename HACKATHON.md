@@ -122,3 +122,16 @@ Ask Copilot for new ideas! For example:
 - *"Add a map view showing all hotels"*
 
 The whole point is to vibe — describe it, let Copilot build it, and see what happens. Have fun!
+
+### Not into coding?
+
+If writing application code isn't your thing, there's plenty more to explore. For example:
+
+- Build container images from the code and push them to an **Azure Container Registry**
+- Create a **Helm chart** for Kubernetes deployment
+- Set up a **CI/CD pipeline** with GitHub Actions
+- Write **Infrastructure as Code** (Bicep, Terraform) to provision Azure resources
+- Add **monitoring and dashboards** with Application Insights
+- Create a **Dockerfile** and docker-compose setup
+
+Ask Copilot to help — it works just as well for infra and DevOps tasks!
