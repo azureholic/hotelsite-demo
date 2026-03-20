@@ -14,4 +14,8 @@
     <PackageReference Include="ModelContextProtocol.AspNetCore" Version="1.0.0-rc.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\aspire\HotelSite.ServiceDefaults\HotelSite.ServiceDefaults.csproj" />
+  </ItemGroup>
+
 </Project>

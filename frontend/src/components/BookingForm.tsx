@@ -62,8 +62,9 @@ export default function BookingForm({ hotelId, rooms }: BookingFormProps) {
       <h3 className="text-lg font-bold text-gray-800">Book a Room</h3>
       {error && <p className="text-red-600 text-sm">{error}</p>}
       <div>
-        <label className="block text-sm font-medium text-gray-600 mb-1">Select Room</label>
+        <label htmlFor="room-select" className="block text-sm font-medium text-gray-600 mb-1">Select Room</label>
         <select
+          id="room-select"
           required
           value={selectedRoom}
           onChange={e => setSelectedRoom(e.target.value)}
@@ -79,30 +80,30 @@ export default function BookingForm({ hotelId, rooms }: BookingFormProps) {
       </div>
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-600 mb-1">Full Name</label>
-          <input required type="text" value={guestName} onChange={e => setGuestName(e.target.value)}
+          <label htmlFor="guest-name" className="block text-sm font-medium text-gray-600 mb-1">Full Name</label>
+          <input id="guest-name" required type="text" value={guestName} onChange={e => setGuestName(e.target.value)}
             className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-600 mb-1">Email</label>
-          <input required type="email" value={guestEmail} onChange={e => setGuestEmail(e.target.value)}
+          <label htmlFor="guest-email" className="block text-sm font-medium text-gray-600 mb-1">Email</label>
+          <input id="guest-email" required type="email" value={guestEmail} onChange={e => setGuestEmail(e.target.value)}
             className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" />
         </div>
       </div>
       <div className="grid grid-cols-3 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-600 mb-1">Check-in</label>
-          <input required type="date" value={checkIn} onChange={e => setCheckIn(e.target.value)}
+          <label htmlFor="check-in" className="block text-sm font-medium text-gray-600 mb-1">Check-in</label>
+          <input id="check-in" required type="date" value={checkIn} onChange={e => setCheckIn(e.target.value)}
             className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-600 mb-1">Check-out</label>
-          <input required type="date" value={checkOut} onChange={e => setCheckOut(e.target.value)}
+          <label htmlFor="check-out" className="block text-sm font-medium text-gray-600 mb-1">Check-out</label>
+          <input id="check-out" required type="date" value={checkOut} onChange={e => setCheckOut(e.target.value)}
             className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-600 mb-1">Guests</label>
-          <input required type="number" min={1} max={10} value={guests} onChange={e => setGuests(+e.target.value)}
+          <label htmlFor="num-guests" className="block text-sm font-medium text-gray-600 mb-1">Guests</label>
+          <input id="num-guests" required type="number" min={1} max={10} value={guests} onChange={e => setGuests(+e.target.value)}
             className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" />
         </div>
       </div>

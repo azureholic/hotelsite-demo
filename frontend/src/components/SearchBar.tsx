@@ -32,8 +32,9 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-600 mb-1">Min Stars</label>
+          <label htmlFor="min-stars" className="block text-sm font-medium text-gray-600 mb-1">Min Stars</label>
           <select
+            id="min-stars"
             value={minStars}
             onChange={e => setMinStars(e.target.value)}
             className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-indigo-500"

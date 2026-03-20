@@ -1,16 +1,43 @@
 using System.ClientModel;
 using Azure.AI.OpenAI;
 using Microsoft.Extensions.AI;
+using Microsoft.Extensions.Configuration;
 using ModelContextProtocol.Client;
 
 // ── Configuration ──
-var endpoint = Environment.GetEnvironmentVariable("AZURE_OPENAI_ENDPOINT")
+// Find the solution root by walking up from the source directory, then load AppHost appsettings
+static string FindSolutionRoot()
+{
+    // Start from the source file's directory (works regardless of build output depth)
+    var dir = new DirectoryInfo(AppContext.BaseDirectory);
+    while (dir is not null)
+    {
+        if (dir.GetFiles("hotelsite.sln").Length > 0)
+            return dir.FullName;
+        dir = dir.Parent;
+    }
+    throw new InvalidOperationException("Could not find hotelsite.sln in any parent directory.");
+}
+
+var solutionRoot = FindSolutionRoot();
+var appHostPath = Path.Combine(solutionRoot, "aspire", "HotelSite.AppHost");
+var config = new ConfigurationBuilder()
+    .AddJsonFile(Path.Combine(appHostPath, "appsettings.json"), optional: true)
+    .AddJsonFile(Path.Combine(appHostPath, "appsettings.Development.json"), optional: true)
+    .AddEnvironmentVariables()
+    .Build();
+
+var endpoint = config["AzureOpenAI:Endpoint"]
+    ?? Environment.GetEnvironmentVariable("AZURE_OPENAI_ENDPOINT")
     ?? throw new InvalidOperationException(
-        "Set AZURE_OPENAI_ENDPOINT environment variable (e.g. https://your-resource.openai.azure.com/)");
-var apiKey = Environment.GetEnvironmentVariable("AZURE_OPENAI_API_KEY")
+        "Set AzureOpenAI:Endpoint in AppHost appsettings.json or AZURE_OPENAI_ENDPOINT env var");
+var apiKey = config["AzureOpenAI:ApiKey"]
+    ?? Environment.GetEnvironmentVariable("AZURE_OPENAI_API_KEY")
     ?? throw new InvalidOperationException(
-        "Set AZURE_OPENAI_API_KEY environment variable");
-var deploymentName = Environment.GetEnvironmentVariable("AZURE_OPENAI_DEPLOYMENT_NAME") ?? "gpt-4o";
+        "Set AzureOpenAI:ApiKey in AppHost appsettings.json or AZURE_OPENAI_API_KEY env var");
+var deploymentName = config["AzureOpenAI:DeploymentName"]
+    ?? Environment.GetEnvironmentVariable("AZURE_OPENAI_DEPLOYMENT_NAME")
+    ?? "gpt-4o";
 var mcpUrl = Environment.GetEnvironmentVariable("MCP_SERVER_URL") ?? "http://localhost:5000/mcp";
 
 Console.ForegroundColor = ConsoleColor.Cyan;

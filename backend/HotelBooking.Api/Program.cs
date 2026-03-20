@@ -10,6 +10,9 @@ using Microsoft.Extensions.AI;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Aspire ServiceDefaults (telemetry, health checks, service discovery)
+builder.AddServiceDefaults();
+
 // Services (singleton for in-memory data)
 builder.Services.AddSingleton<HotelService>();
 builder.Services.AddSingleton<BookingService>();
@@ -35,6 +38,7 @@ var app = builder.Build();
 
 app.UseCors();
 app.MapOpenApi();
+app.MapDefaultEndpoints();
 
 // Serve the React frontend as static files (production)
 app.UseDefaultFiles();
@@ -114,13 +118,13 @@ var endpoint = builder.Configuration["AZURE_OPENAI_ENDPOINT"];
 var apiKey = builder.Configuration["AZURE_OPENAI_API_KEY"];
 var deploymentName = builder.Configuration["AZURE_OPENAI_DEPLOYMENT_NAME"] ?? "gpt-4o";
 
-if (!string.IsNullOrEmpty(endpoint) && !string.IsNullOrEmpty(apiKey))
+if (!string.IsNullOrEmpty(endpoint) && !string.IsNullOrEmpty(apiKey) && Uri.TryCreate(endpoint, UriKind.Absolute, out var endpointUri))
 {
     var hotelService = app.Services.GetRequiredService<HotelService>();
     var bookingService = app.Services.GetRequiredService<BookingService>();
     var tools = HotelAgentTools.Create(hotelService, bookingService);
 
-    var chatClient = new AzureOpenAIClient(new Uri(endpoint), new ApiKeyCredential(apiKey))
+    var chatClient = new AzureOpenAIClient(endpointUri, new ApiKeyCredential(apiKey))
         .GetChatClient(deploymentName);
 
     var agent = chatClient.AsIChatClient().AsAIAgent(
